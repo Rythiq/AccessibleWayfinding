@@ -1,0 +1,25 @@
+{
+  "name": "com.rythiq.accessiblewayfinding",
+  "version": "0.1.0",
+  "displayName": "Accessibility Wayfinding Framework",
+  "description": "Modular framework for accessible 3D wayfinding in Unity.",
+  "license": "LGPL-3.0",
+  "dependencies": {
+    "com.unity.modules.accessibility": "1.0.0",
+    "com.unity.ai.navigation": "1.0.0"
+  },
+  "keywords": [
+    "accessibility",
+    "wayfinding",
+    "3d",
+    "unity"
+  ],
+  "author": {
+    "name": "Werner Richter",
+    "email": "werner.richter@tum.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rythiq/AccessibleWayfinding.git"
+  }
+}
