@@ -8,7 +8,6 @@ namespace AccessibleWayfinding
     {
         public event Action<IAction> OnObjectiveChanged;
         public string Description { get; }
-        public IEnumerable<IAction> Actions { get; }
         public IAction CurrentAction { get; }
         public bool IsCompleted { get; }
         public void Activate();
