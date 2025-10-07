@@ -98,7 +98,7 @@ namespace AccessibleWayfinding.AudioVisualizer
                 if (_icons.ContainsKey(source))
                 {
                     var direction = Camera.main.worldToCameraMatrix * (source.transform.position - transform.position);
-                    _icons[source].rectTransform.anchoredPosition = new Vector2(direction.x, -direction.z).normalized*200f;
+                    _icons[source].rectTransform.anchoredPosition = new Vector2(direction.x, -direction.z +direction.y).normalized*200f;
                     float attenuation = source.GetLoudness();
                     _icons[source].color = new Color(1f, 1f, 1f, attenuation);
                 }
