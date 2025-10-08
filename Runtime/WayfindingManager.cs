@@ -76,6 +76,7 @@ namespace AccessibleWayfinding
             
             foreach (ICue cue in _cues)
             {
+                Debug.Log(cue.Type);
                 switch (cue.Type)
                 {
                     case ICue.CueType.Audio:

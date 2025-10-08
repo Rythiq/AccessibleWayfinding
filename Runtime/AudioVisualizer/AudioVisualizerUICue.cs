@@ -38,6 +38,12 @@ namespace AccessibleWayfinding.AudioVisualizer
                 }
             }
         }
+
+        private void Start()
+        {
+            WayfindingManager.Instance.RegisterCue(this);
+        }
+
         private void Awake()
         {
             if (Instance == null)
@@ -49,7 +55,7 @@ namespace AccessibleWayfinding.AudioVisualizer
             {
                 Destroy(gameObject);
             }
-            IsActive = true;
+            IsActive = false;
         }
         
         public void RegisterAudio(AudioVisualizerSource audioVisualizerSource)
