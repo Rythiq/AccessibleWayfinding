@@ -42,6 +42,11 @@ namespace AccessibleWayfinding
             UpdateCuesForCurrentAction(CurrentObjective.CurrentAction);
         }
         
+        public void UnregisterCue(ICue cue)
+        {
+            _cues.Remove(cue);
+        }
+        
         public void SetObjective(IObjective objective)
         {
             if(CurrentObjective != null)

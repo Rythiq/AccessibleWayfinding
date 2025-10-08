@@ -10,7 +10,6 @@ namespace AccessibleWayfinding
             Audio,
             Haptic
         }
-        public bool IsGlobal { get; }
         public abstract CueType Type { get; }
         public bool IsActive { get; }
         public void Activate(Transform target);

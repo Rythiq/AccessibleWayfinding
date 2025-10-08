@@ -8,8 +8,5 @@ namespace AccessibleWayfinding
         public event Action OnActionCompleted;
         public string Description { get; }
         public Transform Target { get; }
-        public bool IsCompleted { get; }
-        
-        public void Complete();
     }
 }
