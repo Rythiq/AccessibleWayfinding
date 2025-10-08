@@ -8,7 +8,7 @@ namespace AccessibleWayfinding
     {
         public static WayfindingManager Instance { get; private set; }
         public IObjective CurrentObjective { get; private set; }
-        private IWayfindingAccessibilitySettings _wayfindingAccessibilitySettings { get; set; }
+        public IWayfindingAccessibilitySettings wayfindingAccessibilitySettings { get; private set; }
 
         [SerializeField] public Transform playerTransform;
         
@@ -31,8 +31,8 @@ namespace AccessibleWayfinding
         public void RegisterCue(ICue cue)
         {
             _cues.Add(cue);
-            if (_wayfindingAccessibilitySettings == null)
-                _wayfindingAccessibilitySettings = new MinimalWayfindingAccessibilitySettings
+            if (wayfindingAccessibilitySettings == null)
+                wayfindingAccessibilitySettings = new MinimalWayfindingAccessibilitySettings
                 {
                     EnabledAudioCues = true,
                     EnabledVisualCues = true,
@@ -60,7 +60,7 @@ namespace AccessibleWayfinding
         }
         public void SetPreferences(IWayfindingAccessibilitySettings preferences)
         {
-            _wayfindingAccessibilitySettings = preferences;
+            wayfindingAccessibilitySettings = preferences;
             UpdateCuesForCurrentAction(CurrentObjective.CurrentAction);
         }
         private void UpdateCuesForCurrentAction(IAction action)
@@ -79,7 +79,7 @@ namespace AccessibleWayfinding
                 switch (cue.Type)
                 {
                     case ICue.CueType.Audio:
-                        if (_wayfindingAccessibilitySettings.EnabledAudioCues)
+                        if (wayfindingAccessibilitySettings.EnabledAudioCues)
                         {
                             Debug.Log("Audio cue enabled" + cue);
                             cue.Activate(action.Target);
@@ -90,7 +90,7 @@ namespace AccessibleWayfinding
                         }
                         break;
                     case ICue.CueType.Visual:
-                        if (_wayfindingAccessibilitySettings.EnabledVisualCues)
+                        if (wayfindingAccessibilitySettings.EnabledVisualCues)
                         {
                             Debug.Log("Visual cue enabled");
                             cue.Activate(action.Target);
@@ -100,7 +100,7 @@ namespace AccessibleWayfinding
                         }
                         break;
                     case ICue.CueType.Haptic:
-                        if (_wayfindingAccessibilitySettings.EnabledHapticCues)
+                        if (wayfindingAccessibilitySettings.EnabledHapticCues)
                         {
                             Debug.Log("Haptic cue enabled");
                             cue.Activate(action.Target);
@@ -108,6 +108,9 @@ namespace AccessibleWayfinding
                         {
                             cue.Deactivate();
                         }
+                        break;
+                    default:
+                        cue.Activate(action.Target);
                         break;
                 }
             }

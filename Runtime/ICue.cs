@@ -8,7 +8,8 @@ namespace AccessibleWayfinding
         {
             Visual,
             Audio,
-            Haptic
+            Haptic,
+            None
         }
         public abstract CueType Type { get; }
         public bool IsActive { get; }

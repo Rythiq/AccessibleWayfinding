@@ -10,7 +10,7 @@ namespace AccessibleWayfinding.AudioVisualizer
     {
 
         public bool IsGlobal => true;
-        public ICue.CueType Type => ICue.CueType.Visual;
+        public ICue.CueType Type => ICue.CueType.None;
         public bool IsActive { get; private set;}
         public static AudioVisualizerUICue Instance { get; private set; }
         
@@ -21,8 +21,8 @@ namespace AccessibleWayfinding.AudioVisualizer
         
         public void Activate(Transform target)
         {
-            
-            IsActive = true;
+			if(WayfindingManager.Instance.wayfindingAccessibilitySettings.EnabledAudioVisualisation)
+                IsActive = true;
         }
 
         public void Deactivate()
