@@ -23,6 +23,8 @@ namespace AccessibleWayfinding.AudioVisualizer
         {
 			if(WayfindingManager.Instance.wayfindingAccessibilitySettings.EnabledAudioVisualisation)
                 IsActive = true;
+            else
+                IsActive = false;
         }
 
         public void Deactivate()
