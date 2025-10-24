@@ -8,12 +8,13 @@ namespace AccessibleWayfinding
     {
         public static WayfindingManager Instance { get; private set; }
         public IObjective CurrentObjective { get; private set; }
-        public IWayfindingAccessibilitySettings wayfindingAccessibilitySettings { get; private set; }
+        public IWayfindingAccessibilitySettings WayfindingAccessibilitySettings { get; private set; }
 
         [SerializeField] public Transform playerTransform;
         
-        private List<ICue> _cues = new List<ICue>();
-        
+        private readonly List<ICue> _cues = new();
+        private bool _cuesChanged;
+
         private void Awake()
         {
             
@@ -28,18 +29,25 @@ namespace AccessibleWayfinding
             }
         }
 
+        private void Update(){
+            if(_cuesChanged){
+                UpdateCuesForCurrentAction(CurrentObjective.CurrentAction);
+                _cuesChanged = false;
+            }
+        }
+
         public void RegisterCue(ICue cue)
         {
             _cues.Add(cue);
-            if (wayfindingAccessibilitySettings == null)
-                wayfindingAccessibilitySettings = new MinimalWayfindingAccessibilitySettings
+            if (WayfindingAccessibilitySettings == null)
+                WayfindingAccessibilitySettings = new MinimalWayfindingAccessibilitySettings
                 {
                     EnabledAudioCues = true,
                     EnabledVisualCues = true,
                     EnabledHapticCues = true,
                     EnabledAudioVisualisation = true,
                 };
-            UpdateCuesForCurrentAction(CurrentObjective.CurrentAction);
+            _cuesChanged = true;
         }
         
         public void UnregisterCue(ICue cue)
@@ -60,7 +68,7 @@ namespace AccessibleWayfinding
         }
         public void SetPreferences(IWayfindingAccessibilitySettings preferences)
         {
-            wayfindingAccessibilitySettings = preferences;
+            WayfindingAccessibilitySettings = preferences;
             UpdateCuesForCurrentAction(CurrentObjective.CurrentAction);
         }
         private void UpdateCuesForCurrentAction(IAction action)
@@ -80,7 +88,7 @@ namespace AccessibleWayfinding
                 switch (cue.Type)
                 {
                     case ICue.CueType.Audio:
-                        if (wayfindingAccessibilitySettings.EnabledAudioCues)
+                        if (WayfindingAccessibilitySettings.EnabledAudioCues)
                         {
                             Debug.Log("Audio cue enabled" + cue);
                             cue.Activate(action.Target);
@@ -91,7 +99,7 @@ namespace AccessibleWayfinding
                         }
                         break;
                     case ICue.CueType.Visual:
-                        if (wayfindingAccessibilitySettings.EnabledVisualCues)
+                        if (WayfindingAccessibilitySettings.EnabledVisualCues)
                         {
                             Debug.Log("Visual cue enabled");
                             cue.Activate(action.Target);
@@ -101,7 +109,7 @@ namespace AccessibleWayfinding
                         }
                         break;
                     case ICue.CueType.Haptic:
-                        if (wayfindingAccessibilitySettings.EnabledHapticCues)
+                        if (WayfindingAccessibilitySettings.EnabledHapticCues)
                         {
                             Debug.Log("Haptic cue enabled");
                             cue.Activate(action.Target);

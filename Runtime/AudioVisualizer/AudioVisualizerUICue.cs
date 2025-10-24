@@ -21,7 +21,7 @@ namespace AccessibleWayfinding.AudioVisualizer
         
         public void Activate(Transform target)
         {
-			if(WayfindingManager.Instance.wayfindingAccessibilitySettings.EnabledAudioVisualisation)
+			if(WayfindingManager.Instance.WayfindingAccessibilitySettings.EnabledAudioVisualisation)
                 IsActive = true;
             else
                 IsActive = false;
