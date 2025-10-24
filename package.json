@@ -25,13 +25,23 @@
   "samples": [
     {
       "displayName": "Demo Scene",
-      "description": "A simple example demonstrating the core features of the Accessible Wayfinding Framework.",
+      "description": "A simple example demonstrating the core features of the Accessible Wayfinding Framework. This already includes all other samples if you import this, you don't need to import the others separately.",
       "path": "Samples~/Demo Scene 3D"
     },
     {
       "displayName": "Objectives and Actions",
       "description": "A set of sample objectives and actions to use in your own scenes.",
-      "path": "Samples~/Demo Scene 3D/_Project/Scripts/Objectives And Actions"
+      "path": "Samples~/Demo Scene 3D/_Project/Scripts/Objectives and Actions"
+    },
+    {
+      "displayName": "Settings",
+      "description": "Sample settings menu for configuring the Accessible Wayfinding Framework.",
+      "path": "Samples~/Demo Scene 3D/_Project/Scripts/Settings"
+    },
+    {
+      "displayName": "Cues",
+      "description": "A collection of sample cues for providing feedback to users.",
+      "path": "Samples~/Demo Scene 3D/_Project/Scripts/Cues"
     }
   ]
 }
