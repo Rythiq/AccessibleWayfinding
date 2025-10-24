@@ -21,5 +21,17 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Rythiq/AccessibleWayfinding.git"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Demo Scene",
+      "description": "A simple example demonstrating the core features of the Accessible Wayfinding Framework.",
+      "path": "Samples~/Demo Scene 3D"
+    },
+    {
+      "displayName": "Objectives and Actions",
+      "description": "A set of sample objectives and actions to use in your own scenes.",
+      "path": "Samples~/Demo Scene 3D/_Project/Scripts/Objectives And Actions"
+    }
+  ]
 }
