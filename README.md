@@ -115,4 +115,4 @@ If you encounter bugs or have feature requests, please open an issue on GitHub.
 
 ## Author
 
-Developed by Werner Richter as part of a Bachelor's thesis in Informatics: Games Engineering at the Technical University of Munich (TUM).
+Developed as part of a Bachelor's thesis in Informatics: Games Engineering at the Technical University of Munich (TUM).
